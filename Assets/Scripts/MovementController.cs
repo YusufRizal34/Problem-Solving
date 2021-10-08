@@ -24,7 +24,7 @@ public class MovementController : MonoBehaviour
 
     private void Move(float x, float y){
         movement.Set(x, y);
-        movement = movement.normalized * speed;
-        rb.AddForce(rb.position + movement);
+        movement = movement.normalized * speed * Time.fixedDeltaTime;
+        rb.MovePosition(rb.position + movement);
     }
 }

@@ -5,26 +5,25 @@ using UnityEngine;
 public class MovementController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public Vector2 movement;
+    private Vector2 movement;
+    public Camera mainCamera;
 
     public float speed = 5f;
-    private float horizontalMovement;
-    private float verticalMovement;
 
     private void Awake(){
         rb = GetComponent<Rigidbody2D>();
     }
 
     private void Update(){
-        horizontalMovement  = Input.GetAxis("Horizontal");
-        verticalMovement    = Input.GetAxis("Vertical");
-
-        Move(horizontalMovement, verticalMovement);
+        Move(mainCamera.ScreenToWorldPoint(Input.mousePosition));
     }
 
-    private void Move(float x, float y){
-        movement.Set(x, y);
-        movement = movement.normalized * speed * Time.fixedDeltaTime;
-        rb.MovePosition(rb.position + movement);
+    private void Move(Vector3 position){
+        position.z = 0f;
+        if(transform.position != position){
+            movement.Set(position.x, position.y);
+            movement = movement.normalized * speed * Time.fixedDeltaTime;
+            rb.MovePosition(rb.position + movement);
+        }
     }
 }

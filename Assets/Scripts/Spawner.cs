@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
     [Header("Square Object")]
     public GameObject square;
     public int squareTotal;
-    public int squareCounter = 0;
+    private int squareCounter = 0;
 
     [Header("Area")]
     public float xArea = 2;

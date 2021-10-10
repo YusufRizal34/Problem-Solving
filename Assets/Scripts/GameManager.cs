@@ -9,12 +9,19 @@ public class GameManager : MonoBehaviour
 
     [Header("Player")]
     public Transform player;
+    public GameObject scorePanel;
 
-    [Header("Square Object")]
+    [Header("Object Controller")]
     public GameObject square;
+    public GameObject triangle;
+    
     public int squareTotal;
     public int squareCounter;
-    private List<GameObject> poolingObject = new List<GameObject>();
+
+    public int triangleTotal;
+
+    public List<GameObject> squareObject = new List<GameObject>();
+    public List<GameObject> triangleObject = new List<GameObject>();
 
     [Header("Area")]
     public float xArea = 2;
@@ -34,7 +41,11 @@ public class GameManager : MonoBehaviour
         score = 0;
 
         while(squareCounter < squareTotal){
-            SpawnSquare();
+            EarlySpawn(squareObject, square);            
+        }
+
+        for(int i = 0; i < triangleTotal; i++){
+            CreateObject(triangleObject, triangle);
         }
     }
     
@@ -42,12 +53,18 @@ public class GameManager : MonoBehaviour
         UpdateScore();
     }
 
-    public void SpawnSquare(){
-        float distance = Vector2.Distance(GameManager.Instance.player.position, GetPosition());
+    public void CreateObject(List<GameObject> listObject, GameObject objects){
+        GameObject obj = Instantiate(objects);
+        obj.SetActive(false);
+        listObject.Add(obj);
+    }
+
+    public void EarlySpawn(List<GameObject> listObject, GameObject objects){
+        float distance = Vector2.Distance(player.position, GetPosition());
 
         if(distance > 1.5f){
-            GameObject obj = Instantiate(square, GetPosition(), transform.rotation.normalized);
-            poolingObject.Add(obj);
+            GameObject obj = Instantiate(objects, GetPosition(), transform.rotation.normalized);
+            listObject.Add(obj);
             squareCounter++;
         }
     }
@@ -59,10 +76,10 @@ public class GameManager : MonoBehaviour
         return new Vector3(xPosition, yPosition, 0f);
     }
 
-    public GameObject GetPooledObject(){
-        for(int i = 0; i < poolingObject.Count; i++){
-            if(!poolingObject[i].activeInHierarchy){
-                return poolingObject[i];
+    public GameObject GetPooledObject(List<GameObject> listObject){
+        for(int i = 0; i < listObject.Count; i++){
+            if(!listObject[i].activeInHierarchy){
+                return listObject[i];
             }
         }
         return null;

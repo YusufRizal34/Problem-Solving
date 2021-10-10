@@ -150,7 +150,7 @@ Transform:
   m_GameObject: {fileID: 10816373}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3, y: 3, z: 0}
-  m_LocalScale: {x: 10, y: 0.2, z: 1}
+  m_LocalScale: {x: 11, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 721992657}
   m_RootOrder: 0
@@ -266,7 +266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: -100}
+  m_AnchoredPosition: {x: -85, y: -50}
   m_SizeDelta: {x: 80, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &75332333
@@ -291,7 +291,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 15
+    m_FontSize: 25
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 0
@@ -576,7 +576,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 3.1159997
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -718,7 +718,7 @@ Transform:
   m_GameObject: {fileID: 872038245}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -3, y: -3, z: 0}
-  m_LocalScale: {x: 10, y: 0.2, z: 1}
+  m_LocalScale: {x: 11, y: 0.2, z: 1}
   m_Children: []
   m_Father: {fileID: 721992657}
   m_RootOrder: 1
@@ -775,7 +775,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 962537362}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8, y: 0, z: 0}
+  m_LocalPosition: {x: -8.58, y: -0.04, z: 0}
   m_LocalScale: {x: 0.2, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 721992657}
@@ -884,7 +884,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978720067}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2, y: 0, z: 0}
+  m_LocalPosition: {x: 2.58, y: -0.02, z: 0}
   m_LocalScale: {x: 0.2, y: 6, z: 1}
   m_Children: []
   m_Father: {fileID: 721992657}
@@ -1058,7 +1058,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1680794879}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.8280339, y: -0.32718793, z: 0.7498055}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1079,8 +1079,9 @@ MonoBehaviour:
   player: {fileID: 127203492}
   square: {fileID: 3231557153311722594, guid: ab46e114dd4d49d4e82065704bb8b35e, type: 3}
   squareTotal: 10
-  xArea: 2
-  yArea: 2
+  squareCounter: 0
+  xArea: 4.5
+  yArea: 2.5
   scoreText: {fileID: 75332333}
 --- !u!1 &1882345887
 GameObject:

@@ -4,35 +4,30 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    [Header("Player")]
-    public Transform player;
+    [Header("Spawner Controller")]
+    public float cooldown = 3f;
+    private float currentCooldown = 0;
 
-    [Header("Square Object")]
-    public GameObject square;
-    public int squareTotal;
-    private int squareCounter = 0;
+    private void Update() {
+        GameObject square = GameManager.Instance.GetPooledObject();
 
-    [Header("Area")]
-    public float xArea = 2;
-    public float yArea = 2;
-    
-    void Start()
-    {
-        while(squareCounter < squareTotal){
-            SpawnSquare();
+        if(square != null){
+            Vector2 newPosition = GameManager.Instance.GetPosition();
+            float distance = Vector2.Distance(GameManager.Instance.player.position, newPosition);
+
+            if(Time.time > currentCooldown){
+                if(distance > 1.5f){
+                    square.transform.position = newPosition;
+                    // StartCoroutine(Cooldown(square));
+                    square.SetActive(true);
+                    currentCooldown = Time.time + cooldown;
+                }
+            }
         }
     }
 
-    public void SpawnSquare(){
-        float yPosition = Random.Range(-yArea, yArea);
-        float xPosition = Random.Range(-xArea, xArea);
-        float distance = Vector2.Distance(player.position, new Vector2(xPosition, yPosition));
-
-        if(distance > 1){
-            Instantiate(square, new Vector3(xPosition, yPosition, 0f), transform.rotation.normalized);
-            squareCounter++;
-        }
+    private IEnumerator Cooldown(GameObject square){
+        yield return new WaitForSeconds(cooldown);
+        square.SetActive(true);
     }
-
-
 }

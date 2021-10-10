@@ -11,7 +11,7 @@ public class SpikeController : MonoBehaviour
     }
 
     private void Start() {
-        rb.AddForce(new Vector2(5, 0));
+        rb.AddForce(new Vector2(Random.Range(-1, 1), Random.Range(-1, 1)));
     }
 
     private void Update() {

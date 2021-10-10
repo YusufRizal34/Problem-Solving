@@ -10,10 +10,8 @@ public class Spawner : MonoBehaviour
 
     private void Update() {
         GameObject square = GameManager.Instance.GetPooledObject(GameManager.Instance.squareObject);
-        // GameObject triangle = GameManager.Instance.GetPooledObject(GameManager.Instance.triangleObject);
 
         SpawnOnArena(square);
-        // SpawnOnArena(triangle);
     }
 
     private void SpawnOnArena(GameObject objects){
@@ -27,18 +25,6 @@ public class Spawner : MonoBehaviour
                     objects.SetActive(true);
                     currentCooldown = Time.time + cooldown;
                 }
-            }
-        }
-    }
-
-    private void SpawnOutArena(GameObject objects){
-        if(objects != null){
-            Vector2 newPosition = GameManager.Instance.GetPosition();
-
-            if(Time.time > currentCooldown){
-                objects.transform.position = newPosition * 2;
-                objects.SetActive(true);
-                currentCooldown = Time.time + cooldown;
             }
         }
     }

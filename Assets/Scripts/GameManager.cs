@@ -9,19 +9,14 @@ public class GameManager : MonoBehaviour
 
     [Header("Player")]
     public Transform player;
-    public GameObject scorePanel;
 
     [Header("Object Controller")]
     public GameObject square;
-    public GameObject triangle;
     
     public int squareTotal;
-    public int squareCounter;
-
-    public int triangleTotal;
+    private int squareCounter;
 
     public List<GameObject> squareObject = new List<GameObject>();
-    public List<GameObject> triangleObject = new List<GameObject>();
 
     [Header("Area")]
     public float xArea = 2;
@@ -43,13 +38,12 @@ public class GameManager : MonoBehaviour
         while(squareCounter < squareTotal){
             EarlySpawn(squareObject, square);            
         }
-
-        for(int i = 0; i < triangleTotal; i++){
-            CreateObject(triangleObject, triangle);
-        }
     }
     
     private void Update() {
+        if(score < 0){
+            score = 0;
+        }
         UpdateScore();
     }
 
@@ -86,6 +80,8 @@ public class GameManager : MonoBehaviour
     }
 
     private void UpdateScore(){
-        scoreText.text = "Score: " + score;
+        if(scoreText != null){
+            scoreText.text = "Score: " + score;
+        }
     }
 }
